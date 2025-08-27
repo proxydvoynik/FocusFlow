@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusAI - Intelligent Productivity System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="app-title">FocusAI</h1>
+                    <span class="tagline">Intelligent Productivity System</span>
+                </div>
+                <nav class="nav-tabs">
+                    <button class="nav-tab active" data-view="dashboard">Dashboard</button>
+                    <button class="nav-tab" data-view="predictions">Predictions</button>
+                    <button class="nav-tab" data-view="sessions">Sessions</button>
+                    <button class="nav-tab" data-view="analytics">Analytics</button>
+                    <button class="nav-tab" data-view="tools">Tools</button>
+                    <button class="nav-tab" data-view="settings">Settings</button>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle btn btn--outline btn--sm" title="Toggle theme">🌙</button>
+                    <div class="privacy-indicator">
+                        <span class="status status--success">Local Only</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Dashboard View -->
+            <section id="dashboard" class="view active">
+                <div class="dashboard-grid">
+                    <!-- Focus Score -->
+                    <div class="card focus-score-card">
+                        <div class="card__body">
+                            <h3>Current Focus Score</h3>
+                            <div class="focus-score-display">
+                                <div class="score-circle">
+                                    <span class="score-number">87</span>
+                                    <span class="score-label">/100</span>
+                                </div>
+                                <div class="score-trend">
+                                    <span class="trend-indicator positive">↗ +5 from yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Session -->
+                    <div class="card session-card">
+                        <div class="card__body">
+                            <h3>Active Session</h3>
+                            <div class="session-info">
+                                <div class="session-type">
+                                    <span class="session-badge">Deep Work</span>
+                                    <span class="session-time">Started 9:30 AM</span>
+                                </div>
+                                <div class="session-timer">
+                                    <span class="timer-display">1:15:42</span>
+                                    <span class="timer-label">remaining</span>
+                                </div>
+                                <div class="session-controls">
+                                    <button class="btn btn--sm btn--outline">Pause</button>
+                                    <button class="btn btn--sm btn--primary">Extend</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card quick-actions-card">
+                        <div class="card__body">
+                            <h3>Quick Actions</h3>
+                            <div class="quick-actions">
+                                <button class="quick-action-btn">
+                                    <span class="action-icon">🎯</span>
+                                    <span class="action-label">Start Focus Mode</span>
+                                </button>
+                                <button class="quick-action-btn">
+                                    <span class="action-icon">☕</span>
+                                    <span class="action-label">Take Break</span>
+                                </button>
+                                <button class="quick-action-btn">
+                                    <span class="action-icon">🔧</span>
+                                    <span class="action-label">Optimize Workspace</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent AI Suggestions -->
+                    <div class="card suggestions-card">
+                        <div class="card__body">
+                            <h3>Recent AI Suggestions</h3>
+                            <div class="suggestions-list">
+                                <div class="suggestion-item accepted">
+                                    <span class="suggestion-time">09:28 AM</span>
+                                    <span class="suggestion-text">Starting deep work mode - launching VS Code and blocking distractions</span>
+                                    <span class="suggestion-status">✓ Accepted</span>
+                                </div>
+                                <div class="suggestion-item rejected">
+                                    <span class="suggestion-time">10:15 AM</span>
+                                    <span class="suggestion-text">Taking a 5-minute break to maintain focus</span>
+                                    <span class="suggestion-status">✗ Declined</span>
+                                </div>
+                                <div class="suggestion-item accepted">
+                                    <span class="suggestion-time">10:42 AM</span>
+                                    <span class="suggestion-text">Social media urge predicted - would you like extra blocking?</span>
+                                    <span class="suggestion-status">✓ Accepted</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Predictions View -->
+            <section id="predictions" class="view">
+                <div class="predictions-container">
+                    <div class="card">
+                        <div class="card__body">
+                            <h2>Distraction Predictions Timeline</h2>
+                            <p class="subtitle">AI-powered predictions for the next 4 hours based on your patterns</p>
+                            
+                            <div class="timeline">
+                                <div class="timeline-item high-confidence">
+                                    <div class="timeline-time">10:45 AM</div>
+                                    <div class="timeline-content">
+                                        <div class="prediction-type">Social Media Urge</div>
+                                        <div class="confidence-level">
+                                            <span class="status status--error">High Confidence</span>
+                                            <span class="likelihood">78% likely</span>
+                                        </div>
+                                        <button class="btn btn--sm btn--outline timeline-feedback">Provide Feedback</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item medium-confidence">
+                                    <div class="timeline-time">11:30 AM</div>
+                                    <div class="timeline-content">
+                                        <div class="prediction-type">Email Check</div>
+                                        <div class="confidence-level">
+                                            <span class="status status--warning">Medium Confidence</span>
+                                            <span class="likelihood">65% likely</span>
+                                        </div>
+                                        <button class="btn btn--sm btn--outline timeline-feedback">Provide Feedback</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item low-confidence">
+                                    <div class="timeline-time">12:15 PM</div>
+                                    <div class="timeline-content">
+                                        <div class="prediction-type">Procrastination Pattern</div>
+                                        <div class="confidence-level">
+                                            <span class="status status--info">Low Confidence</span>
+                                            <span class="likelihood">42% likely</span>
+                                        </div>
+                                        <button class="btn btn--sm btn--outline timeline-feedback">Provide Feedback</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item high-confidence">
+                                    <div class="timeline-time">1:00 PM</div>
+                                    <div class="timeline-content">
+                                        <div class="prediction-type">Hunger Break</div>
+                                        <div class="confidence-level">
+                                            <span class="status status--success">High Confidence</span>
+                                            <span class="likelihood">89% likely</span>
+                                        </div>
+                                        <button class="btn btn--sm btn--outline timeline-feedback">Provide Feedback</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sessions View -->
+            <section id="sessions" class="view">
+                <div class="sessions-container">
+                    <div class="card current-session-card">
+                        <div class="card__body">
+                            <h2>Adaptive Session Manager</h2>
+                            <div class="current-session-display">
+                                <h3>Current Session: Deep Work</h3>
+                                <p class="session-description">Focused coding/writing with AI-optimized environment</p>
+                                
+                                <div class="session-settings">
+                                    <div class="setting-item">
+                                        <span class="setting-label">Notifications:</span>
+                                        <span class="setting-value blocked">Blocked</span>
+                                    </div>
+                                    <div class="setting-item">
+                                        <span class="setting-label">Active Tools:</span>
+                                        <span class="setting-value">VS Code, Documentation</span>
+                                    </div>
+                                    <div class="setting-item">
+                                        <span class="setting-label">Theme:</span>
+                                        <span class="setting-value">Dark</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="session-types-grid">
+                        <div class="card session-type-card active">
+                            <div class="card__body">
+                                <h4>Deep Work</h4>
+                                <p>Focused coding/writing</p>
+                                <div class="session-effectiveness">
+                                    <span class="effectiveness-label">Avg. Effectiveness:</span>
+                                    <span class="effectiveness-score">92%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card session-type-card">
+                            <div class="card__body">
+                                <h4>Creative</h4>
+                                <p>Brainstorming and ideation</p>
+                                <div class="session-effectiveness">
+                                    <span class="effectiveness-label">Avg. Effectiveness:</span>
+                                    <span class="effectiveness-score">78%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card session-type-card">
+                            <div class="card__body">
+                                <h4>Collaborative</h4>
+                                <p>Meetings and team work</p>
+                                <div class="session-effectiveness">
+                                    <span class="effectiveness-label">Avg. Effectiveness:</span>
+                                    <span class="effectiveness-score">85%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card session-type-card">
+                            <div class="card__body">
+                                <h4>Learning</h4>
+                                <p>Research and study</p>
+                                <div class="session-effectiveness">
+                                    <span class="effectiveness-label">Avg. Effectiveness:</span>
+                                    <span class="effectiveness-score">81%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics View -->
+            <section id="analytics" class="view">
+                <div class="analytics-container">
+                    <div class="card">
+                        <div class="card__body">
+                            <h2>Privacy-First Analytics</h2>
+                            <div class="privacy-notice">
+                                <span class="status status--success">All data processed locally</span>
+                                <span class="data-retention">Data retention: 30 days</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-grid">
+                        <div class="card chart-card">
+                            <div class="card__body">
+                                <h3>Weekly Focus Trends</h3>
+                                <div class="chart-container" style="position: relative; height: 300px;">
+                                    <canvas id="focusChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card chart-card">
+                            <div class="card__body">
+                                <h3>Distraction Patterns</h3>
+                                <div class="chart-container" style="position: relative; height: 300px;">
+                                    <canvas id="distractionChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card stats-card">
+                            <div class="card__body">
+                                <h3>Key Insights</h3>
+                                <div class="insights-list">
+                                    <div class="insight-item">
+                                        <span class="insight-label">Best Productive Hours:</span>
+                                        <span class="insight-value">9:00-11:00 AM, 2:00-4:00 PM</span>
+                                    </div>
+                                    <div class="insight-item">
+                                        <span class="insight-label">Session Success Rate:</span>
+                                        <span class="insight-value">73%</span>
+                                    </div>
+                                    <div class="insight-item">
+                                        <span class="insight-label">Most Common Distraction:</span>
+                                        <span class="insight-value">Social Media (34%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tools View -->
+            <section id="tools" class="view">
+                <div class="tools-container">
+                    <div class="card">
+                        <div class="card__body">
+                            <h2>Tool Integration Dashboard</h2>
+                            <p class="subtitle">Automated workspace preparation and tool management</p>
+                        </div>
+                    </div>
+
+                    <div class="tools-grid">
+                        <div class="card tool-card status-ready">
+                            <div class="card__body">
+                                <div class="tool-header">
+                                    <span class="tool-name">VS Code</span>
+                                    <span class="tool-status status status--success">Ready</span>
+                                </div>
+                                <div class="tool-details">
+                                    <span class="tool-detail">Last launched: 09:31 AM</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card tool-card status-paused">
+                            <div class="card__body">
+                                <div class="tool-header">
+                                    <span class="tool-name">Slack</span>
+                                    <span class="tool-status status status--warning">Paused</span>
+                                </div>
+                                <div class="tool-details">
+                                    <span class="tool-detail">5 pending notifications</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card tool-card status-active">
+                            <div class="card__body">
+                                <div class="tool-header">
+                                    <span class="tool-name">Calendar</span>
+                                    <span class="tool-status status status--info">Active</span>
+                                </div>
+                                <div class="tool-details">
+                                    <span class="tool-detail">Next event: 2:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card tool-card status-active">
+                            <div class="card__body">
+                                <div class="tool-header">
+                                    <span class="tool-name">Spotify</span>
+                                    <span class="tool-status status status--success">Active</span>
+                                </div>
+                                <div class="tool-details">
+                                    <span class="tool-detail">Playing: Focus Mix</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card tool-card status-ready">
+                            <div class="card__body">
+                                <div class="tool-header">
+                                    <span class="tool-name">Notes</span>
+                                    <span class="tool-status status status--success">Ready</span>
+                                </div>
+                                <div class="tool-details">
+                                    <span class="tool-detail">3 documents open</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card workspace-optimization">
+                        <div class="card__body">
+                            <h3>Automated Workspace Optimization</h3>
+                            <div class="optimization-actions">
+                                <div class="action-item completed">
+                                    <span class="action-status">✓</span>
+                                    <span class="action-text">Launched VS Code with yesterday's project</span>
+                                </div>
+                                <div class="action-item completed">
+                                    <span class="action-status">✓</span>
+                                    <span class="action-text">Paused Slack notifications</span>
+                                </div>
+                                <div class="action-item completed">
+                                    <span class="action-status">✓</span>
+                                    <span class="action-text">Started focus playlist</span>
+                                </div>
+                                <div class="action-item pending">
+                                    <span class="action-status">⏳</span>
+                                    <span class="action-text">Preparing break reminder for 11:30 AM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings View -->
+            <section id="settings" class="view">
+                <div class="settings-container">
+                    <div class="card">
+                        <div class="card__body">
+                            <h2>Settings & Preferences</h2>
+                            <p class="subtitle">Maintain full control over your privacy and personalization</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-grid">
+                        <div class="card settings-section">
+                            <div class="card__body">
+                                <h3>Privacy Controls</h3>
+                                <div class="settings-list">
+                                    <div class="setting-row">
+                                        <label class="form-label">Data Retention</label>
+                                        <select class="form-control">
+                                            <option value="7">7 days</option>
+                                            <option value="30" selected>30 days</option>
+                                            <option value="90">90 days</option>
+                                        </select>
+                                    </div>
+                                    <div class="setting-row">
+                                        <label class="form-label">Privacy Mode</label>
+                                        <select class="form-control">
+                                            <option value="basic">Basic</option>
+                                            <option value="enhanced">Enhanced</option>
+                                            <option value="maximum" selected>Maximum</option>
+                                        </select>
+                                    </div>
+                                    <div class="setting-row">
+                                        <label class="form-label">
+                                            <input type="checkbox" checked> Local processing only
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card settings-section">
+                            <div class="card__body">
+                                <h3>AI Learning</h3>
+                                <div class="settings-list">
+                                    <div class="setting-row">
+                                        <label class="form-label">
+                                            <input type="checkbox" checked> Auto session detection
+                                        </label>
+                                    </div>
+                                    <div class="setting-row">
+                                        <label class="form-label">
+                                            <input type="checkbox" checked> Proactive notifications
+                                        </label>
+                                    </div>
+                                    <div class="setting-row">
+                                        <label class="form-label">
+                                            <input type="checkbox" checked> Learning enabled
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card settings-section">
+                            <div class="card__body">
+                                <h3>Personalization</h3>
+                                <div class="settings-list">
+                                    <div class="setting-row">
+                                        <label class="form-label">Default Session Type</label>
+                                        <select class="form-control">
+                                            <option value="deep" selected>Deep Work</option>
+                                            <option value="creative">Creative</option>
+                                            <option value="collaborative">Collaborative</option>
+                                            <option value="learning">Learning</option>
+                                        </select>
+                                    </div>
+                                    <div class="setting-row">
+                                        <label class="form-label">Break Intervals</label>
+                                        <select class="form-control">
+                                            <option value="15">15 minutes</option>
+                                            <option value="25" selected>25 minutes</option>
+                                            <option value="45">45 minutes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card data-export">
+                        <div class="card__body">
+                            <h3>Data Management</h3>
+                            <div class="data-actions">
+                                <button class="btn btn--outline">Export Data</button>
+                                <button class="btn btn--outline">Clear History</button>
+                                <button class="btn btn--outline btn--error">Reset Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- AI Processing Indicator -->
+        <div class="ai-indicator">
+            <div class="ai-indicator-content">
+                <span class="ai-dot"></span>
+                <span class="ai-text">AI Learning...</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
